@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.HashSet;
+
+public class Pangram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String str = sc.nextLine().toLowerCase();
+        boolean isPangram = isPangram(str);
+
+        if (isPangram) 
+            System.out.println("The input is a pangram.");
+         else 
+            System.out.println("The input is not a pangram.");
+        
+    }
+
+    public static boolean isPangram(String str) {
+       
+        HashSet<Character> map = new HashSet<>();
+
+        for (char c : str.toCharArray()) {
+            
+            if(c >= 'a' && c <= 'z' ){
+                map.add(c); // Add the letter 
+            }
+        }
+
+        return map.size() == 26;
+         // if size is 26 means it contains all the letters
+    }
+}

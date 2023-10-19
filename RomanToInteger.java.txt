@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class RomanToInteger {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a Roman number: ");
+        String roman = scanner.nextLine();
+        System.out.println("Integer value: " + romanToInt(roman));
+    }
+
+    public static int romanToInt(String s) {
+    
+        Map<Character, Integer> mp = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int ans = 0;
+        int pre = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int value = mp.get(s.charAt(i));
+            if (value < pre) {
+                ans -= value; 
+            } else {
+                ans += value; 
+            }
+            pre = value;
+        }
+
+        return ans;
+    }
+}
